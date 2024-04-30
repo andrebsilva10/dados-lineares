@@ -15,16 +15,16 @@ class Josephus {
             posicaoAtual = this.pessoas[eliminado];
             console.log('Posição atual:', posicaoAtual);
 
-            this.pessoas = this.removerElemento(this.pessoas, eliminado);
+            this.pessoas = this.removerPessoa(this.pessoas, eliminado);
 
-            eliminado = (eliminado + posicaoAtual) % this.pessoas.length;
+            eliminado = (eliminado + posicaoAtual - 1) % this.pessoas.length;
         }
 
         console.log('Última pessoa:', this.pessoas[0]);
         return this.pessoas[0];
     }
 
-    private removerElemento(pessoas: number[], eliminado: number) {
+    private removerPessoa(pessoas: number[], eliminado: number) {
         const NAO_ELIMINADOS = [];
 
         for (let i = 0; i < pessoas.length; i++) {
@@ -37,5 +37,5 @@ class Josephus {
     }
 }
 
-const j = new Josephus(5, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+const j = new Josephus(4, [6, 1, 3, 2, 4, 7]);
 j.ultimaPessoa();
